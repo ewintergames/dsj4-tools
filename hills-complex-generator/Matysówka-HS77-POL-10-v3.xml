@@ -1,0 +1,222 @@
+<hill version="DSJ4-1.5.0" author="Kamil Sleczka">
+    <location latitude="49.9857" longitude="22.0552" orientation="300" timezone="2" altitude="320" />
+    <weather pollution="1.0" firstsnow="300" lastsnow="90" maxsnow="1.5" precipitationprobability="0.1"
+        fogprobability="0.8" />
+		
+    <inrun>
+        <profile e="63.5" es="10" t="5.6" gamma="34" alpha="9.5" 
+			r1="65" s="1.55" b1="1.5" z0="0" l="0" f="1" />
+        <guardrail z1="-0.75" z2="0.75" x="10" />
+        <startgate default="5" max="13" step="0.5" wind="0.8" z1="-1.11" z2="0.4" pz1="-1.11" pz2="-0.995"
+            t1="Textures\metal.png" m1="Materials\material1.xml" c1="0x2b51a1" t2="Textures\metal.png"
+            m2="Materials\material1.xml" c2="0x999999" t3="Textures\metal.png" m3="Materials\material1.xml"
+            c3="0x2b51a1" />
+		<gatenumbers z="-1.25" y="-0.075" c1="0xffededed" c2="0x28ffffff" size="0.15" min="1" max="15" />
+        <startbanner z="0" text="RZESZOW" textsize="0.1" />
+        <frame bh="0.5" pt="false" snow="false" t="Textures\concrete5.png" m="Materials\material1.xml" c0="0x2b51a1"
+            c1="0x2b51a1" c="0x2b51a1" c2="0x2b51a1" />
+        <flag x="1" z="1.1" hf="1.0" pf="1.5" hp="5.0" rb="0.02" rt="0.02" tf="Textures\flag-pol.png"
+            mf="Materials\flag.xml" tp="Textures\wood1.png" mp="Materials\material1.xml" cp="0xffffff" />
+        <twigs lz="0.5" rz="-0.5" />
+		<track type="ceramic" snow="false"/>
+    </inrun>
+	
+    <dhill>
+        <profile 
+			alpha="6.28" h="30" n="60" l1="5" l2="7" 
+			a="50" beta-p="35" beta="32.5" beta-l="30.5" rl="220.0" r2="77.0" 
+			b0="5.5" bk="15.0" ba="19" hr="14" nr="75" ar="0" x0="6"
+			k="70" hs="77" />
+        <fence t="Textures\fenceback.png" m="Materials\material1.xml" c="0xffffff" />
+        <judgetower d="35" q="15" h="+3.5" t1="Textures\concrete5.png" m1="Materials\concrete.xml" c1="0xf1f1f1"
+            t2="Textures\corrugated.png" m2="Materials\concrete.xml" c2="0x131313" />
+        <lights step="50" size="2" h="10" d="15" r="0.70" g="0.65" b="0.60" attn="0.0005" range="200"
+            t="Textures\rust1.png" m="Materials\metal.xml" c="0x999999" />
+        <windflags h="4" l="4.1" d="0.3" t="Textures\rust1.png" m="Materials\metal.xml" c="0x999999" />
+        <measurers c1="0x578ad1" c2="0xeeeeee" />
+        <label summer-d="30" winter-d="30" text="RZESZOW" textsize="2" />
+        <plastic c="0x2b51a1" />
+        <lines summer-min="45" summer-max="80" winter-min="45" winter-max="80" />
+        <numbers min="30" max="80" h1="0.01" h2="0.01" />
+    </dhill>
+
+    <profile id="inrun-left" side="left" maxstep="1000">
+        <start x="-10" y="1.0" refx="inrun" />
+        <line x="0" y="1.0" refx="dhill" />
+    </profile>
+
+    <profile id="inrun-right" side="right" maxstep="1000">
+        <start x="-10" y="-1.0" refx="inrun" />
+        <line x="0" y="-1.0" refx="dhill" />
+    </profile>
+	
+	<profile id="inrun-terrain">
+        <start x="-95" y="1.95"/>
+        <line x="-15" y="1.15"/>
+		<line x="-10" y="0.75"/>
+        <line x="-7.5" y="0.5"/>
+        <line x="-5" y="0"/>
+        <line x="0" y="0"/>
+    </profile>
+
+	<!-- profil dla schodków -->
+	<profile id="stairs-right" maxstep="1000">
+        <start x="-5" y="0" refx="dhill" refy="inrun-top" />
+        <line x="0" y="-4" refx="dhill" refy="inrun-top" />
+    </profile>
+
+    <terrain>
+        <profile in="1" a0="5.0" l0="50.0" y0="-25" hd="13.5" dd="75.0" sd="7" fd="600" sc="0.12" sm="0.65"
+            rs="1820" c1="0x443920" c2="0x5D603A" tsc="0.008" tsm="0.4" />
+        <trees count="10000" minheight="10" maxheight="25" fractalthreshold="0.8" maxaltitude="1600"
+            normalaltitude="1000" seed="142" />
+        <blocks count="10" minsaturation="0.0" maxsaturation="0.1" minfloors="1" maxfloors="4" maxaltitude="1300"
+            normalaltitude="1000" fractalthreshold="0.3" seed="258" />
+        <houses count="900" minsaturation="0.0" maxsaturation="0.2" minfloors="1" maxfloors="2" maxaltitude="1600"
+            normalaltitude="1000" fractalthreshold="0.5" seed="156" />
+        <audience count="500" d="20" x0="0" seed="413" />
+    </terrain>
+	
+	<lights refy="inrun-top" refx1="inrun" refx2="dhill" refz="inrun-left" x1="0" x2="0" step="1.025" l="1" h="0" n="0" d="0.925" r="0.2" g="0.2" b="0.2" attn="2" range="50" day="false"/>
+	<lights refy="inrun-top" refx1="inrun" refx2="dhill" refz="inrun-left" x1="0" x2="0" step="1.025" l="1" h="0" n="0" d="0.955" r="0.2" g="0.2" b="0.2" attn="2" range="50" day="false"/>
+	<lights refy="inrun-top" refx1="inrun" refx2="dhill" refz="inrun-left" x1="0" x2="0" step="1.025" l="1" h="0" n="0" d="0.985" r="0.2" g="0.2" b="0.2" attn="2" range="50" day="false"/>
+	<lights refy="inrun-top" refx1="inrun" refx2="dhill" refz="inrun-left" x1="0" x2="0" step="1.025" l="1" h="0" n="0" d="1.015" r="0.2" g="0.2" b="0.2" attn="2" range="50" day="false"/>
+	<lights refy="inrun-top" refx1="inrun" refx2="dhill" refz="inrun-left" x1="0" x2="0" step="1.025" l="1" h="0" n="0" d="1.045" r="0.2" g="0.2" b="0.2" attn="2" range="50" day="false"/>
+	<lights refy="inrun-top" refx1="inrun" refx2="dhill" refz="inrun-left" x1="0" x2="0" step="1.025" l="1" h="0" n="0" d="1.075" r="0.2" g="0.2" b="0.2" attn="2" range="50" day="false"/>
+	
+	<!-- SCHODYs -->
+	<stairs refx="inrun" x1="0" x2="10" rz="-3.15" lz="-1" s="0.5" h="0.05" type="glass" t1="Textures\rubbermat.png" m1="Materials\material1.xml" c1="0x434343" t2="Textures\grid.png" m2="Materials\material1.xml" c2="0xbebebe"/>
+	<stairs refx1="inrun" refx2="dhill" x1="10" x2="0" rz="-2.1" lz="-1" s="0.25" type="glass" h="0.05" t1="Textures\rubbermat.png" m1="Materials\material1.xml" c1="0xbebebe" t2="Textures\grid.png" m2="Materials\material1.xml" c2="0xbebebe"/>
+
+	<!-- PILARYs -->
+	<pillar refx1="inrun" refx2="inrun" top="true" x1="-5" x2="10.2" rz="-3.2" lz="1.2" trefy="inrun-top" brefy="inrun-top" ty="-0.02" by="-0.2" t="Textures\metal.png" m="Materials\material1.xml" c="0xd1ccc2"/>
+	<pillar refx1="inrun" refx2="dhill" top="true" x1="10.2" x2="0" rz="-2.2" lz="1.2" trefy="inrun-top" brefy="inrun-top" ty="-0.02" by="-0.2" t="Textures\metal.png" m="Materials\material1.xml" c="0xd1ccc2"/>
+	<pillar refx1="inrun" refx2="inrun" top="true" x1="-5" x2="-4.8" rz="-2.4" lz="1.5" trefy="inrun-top" brefy="inrun-top" ty="-0.02" by="-5" count="24" step="2.8" t="Textures\metal.png" m="Materials\material1.xml" c="0xd1ccc2"/>
+	
+	<!-- OBRONNE RAILINGs - SZKŁO WEWNĄTRZ -->
+
+	<railing refx1="inrun" refx2="dhill" guard="true" type="glass" bottom="false" pt="true" h="0.5" x1="10" x2="0" z="-0.975" w="0.05" t="Textures\railing-glass-cut.png" m="Materials\window.xml" c="0xff000915"/>
+	<railing refx1="inrun" refx2="dhill" guard="true" type="glass" bottom="false" pt="true" h="0.5" x1="10" x2="0" z="-0.975" w="0.05" t="Textures\railing-glass-cut.png" m="Materials\window.xml" c="0xff000915"/>
+	<railing refx1="inrun" refx2="dhill" guard="true" type="glass" bottom="false" pt="true" h="0.5" x1="10" x2="0" z="-0.975" w="0.05" t="Textures\railing-glass-cut.png" m="Materials\window.xml" c="0xff000915"/>
+	<railing refx1="inrun" refx2="dhill" guard="true" type="glass" bottom="false" pt="true" h="0.5" x1="10" x2="0" z="-0.975" w="0.05" t="Textures\railing-glass-cut.png" m="Materials\window.xml" c="0xff000915"/>
+	<railing refx1="inrun" refx2="dhill" guard="true" type="glass" bottom="false" pt="true" h="0.5" x1="10" x2="0" z="-0.975" w="0.05" t="Textures\railing-glass-cut.png" m="Materials\window.xml" c="0xff000915"/>
+	<railing refx1="inrun" refx2="dhill" guard="true" type="glass" bottom="false" pt="true" h="0.5" x1="10" x2="0" z="-0.975" w="0.05" t="Textures\railing-glass-cut.png" m="Materials\window.xml" c="0xff000915"/>
+	<railing refx1="inrun" refx2="dhill" guard="true" type="glass" bottom="false" pt="true" h="0.5" x1="10" x2="0" z="-0.975" w="0.05" t="Textures\railing-glass-cut.png" m="Materials\window.xml" c="0xff000915"/>
+	<railing refx1="inrun" refx2="dhill" guard="true" type="glass" bottom="false" pt="true" h="0.5" x1="10" x2="0" z="-0.975" w="0.05" t="Textures\railing-glass-cut.png" m="Materials\window.xml" c="0xff000915"/>
+		
+	<!-- OBRONNE RAILINGs - BARIERKA ZEWNĄTRZ -->
+	
+	<!-- metal tył -->
+	<railing refx="inrun" refy="inrun-top" refx1="inrun" refx2="inrun" pt="true" h="0.03" x="-5" y="0.4" z1="-3.15" z2="1.1" w="0.03" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+	<railing refx="inrun" refy="inrun-top" refx1="inrun" refx2="inrun" pt="true" h="0.03" x="-5" y="0.7" z1="-3.15" z2="1.1" w="0.03" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+	<beamgroup refx="inrun"  refx1="inrun" refx2="inrun" refz1="inrun-right" refy="inrun-top"
+				last="true" end2="true" rect="true"
+				x1="-5" x2="-5" z1="2.1" z2="-3.15" step="1.75" stepper="1" fitstep="false"
+				dy1="-0.1" dy2="0.715"
+				r="0.02" edges="4" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+
+	<!-- metal left zwykły -->
+	<railing refx1="inrun" refx2="dhill" pt="true" h="0.03" x1="10.1" x2="-6" y="0.4" z="-2.1" w="0.03" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+	<railing refx1="inrun" refx2="dhill" pt="true" h="0.03" x1="10.1" x2="-6" y="0.7" z="-2.1" w="0.03" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+	<beamgroup refx1="inrun" refx2="dhill" refz1="inrun-right" refy="inrun-top" last="true" end2="true"
+		x1="10.1" x2="-6" step="1.75" stepper="2" fitstep="true"
+		dx1="0.0" dx2="0.0" dy1="-0.1" dy2="0.715" dz="-1.1"
+		r="0.02" edges="4" smooth="false" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+		
+	<railing refx1="dhill" refx2="dhill" pt="true" h="0.03" x1="-4.665" x2="-0.085" y="0.4" z="-2.1" w="0.03" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+	<railing refx1="dhill" refx2="dhill" pt="true" h="0.03" x1="-4.665" x2="-0.085" y="0.7" z="-2.1" w="0.03" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+	<beamgroup refx1="dhill" refx2="dhill" refz1="inrun-right" refy="inrun-top" last="true" end2="true"
+		x1="-4.65" x2="-0.10" step="1.75" stepper="2" fitstep="true"
+		dx1="0.0" dx2="0.0" dy1="-0.1" dy2="0.715" dz="-1.1"
+		r="0.02" edges="4" smooth="false" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+	
+	<!-- left metal -->
+	<railing refx="inrun" refy="inrun-top" refx1="inrun" refx2="inrun" pt="true" h="0.03" x1="-5" x2="10.1" y="0.4" z="-3.15" w="0.03" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+	<railing refx="inrun" refy="inrun-top" refx1="inrun" refx2="inrun" pt="true" h="0.03" x1="-5" x2="10.1" y="0.7" z="-3.15" w="0.03" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+	<beamgroup refx="inrun" refx1="inrun" refx2="inrun" refz1="inrun-right" refy="inrun-top" last="true" end2="true"
+		x1="-5" x2="10.1" step="1.75" stepper="2" fitstep="true"
+		dx1="0.0" dx2="0.0" dy1="-0.1" dy2="0.715" dz="-2.15"
+		r="0.02" edges="4" smooth="false" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+		
+	<!-- right metal -->
+	<railing refx="inrun" refy="inrun-top" refx1="inrun" refx2="inrun" pt="true" h="0.03" x1="-5" x2="10.1" y="0.4" z="1.1" w="0.03" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+	<railing refx="inrun" refy="inrun-top" refx1="inrun" refx2="inrun" pt="true" h="0.03" x1="-5" x2="10.1" y="0.7" z="1.1" w="0.03" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+	<beamgroup refx="inrun" refx1="inrun" refx2="inrun" refz1="inrun-left" refy="inrun-top" last="true" end2="true"
+		x1="-5" x2="10.1" step="1.75" stepper="2" fitstep="true"
+		dx1="0.0" dx2="0.0" dy1="-0.1" dy2="0.715" dz="0.1"
+		r="0.02" edges="4" smooth="false" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+	
+	<!-- metal załamanie -->
+	<railing refx="inrun" refy="inrun-top" refx1="inrun" refx2="inrun" pt="true" h="0.03" x="10.1" y="0.4" z1="-3.15" z2="-2.1" w="0.03" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+	<railing refx="inrun" refy="inrun-top" refx1="inrun" refx2="inrun" pt="true" h="0.03" x="10.1" y="0.7" z1="-3.15" z2="-2.1" w="0.03" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+	
+	<!-- SCHODY PRÓG -->
+	<!-- załamanie -->
+	<railing refx="dhill" pt="true" h="0.5" x="-6" z1="-3" z2="-2.0" w="0.2" t="Textures\metal.png" m="Materials\material1.xml" c="0xd1ccc2"/>
+	<railing refx="dhill" pt="true" h="0.03" x="-6" y="0.4" z1="-3" z2="-2.1" w="0.03" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+	<railing refx="dhill" pt="true" h="0.03" x="-6" y="0.7" z1="-3" z2="-2.1" w="0.03" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+	
+	<!--schody-->
+	<stairs id="stairs" s="0.25" h="0.05" y1="0.0" y2="-4" c2="0xd1ccc2" m2="Materials\material1.xml" t2="Textures\concrete1.png" c1="0xbebebe" m1="Materials\material1.xml" t1="Textures\grid.png" 
+		rz="-3" lz="-2" d="0.3" x2="0" x1="-5" refx2="dhill" refx1="dhill"/>
+	<stairs refx1="dhill" refx2="dhill" x1="-6" x2="-5" rz="-3" lz="-2" s="0.25" h="0.05" t1="Textures\grid.png" m1="Materials\material1.xml" c1="0xbebebe" t2="Textures\concrete1.png" m2="Materials\material1.xml" c2="0xd1ccc2"/>
+
+	<!--barierki-->
+	<railing refx="dhill" pt="true" h="0.5" x1="-6.1" x2="-5" z="-3" w="0.2" t="Textures\metal.png" m="Materials\material1.xml" c="0xd1ccc2"/>
+	<railing refx="dhill" pt="true" h="0.03" x1="-6" x2="-5" y="0.4" z="-3" w="0.03" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+	<railing refx="dhill" pt="true" h="0.03" x1="-6" x2="-5" y="0.7" z="-3" w="0.03" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+	<beamgroup refx="dhill" refz1="inrun-right" refy="inrun-top" last="true" end2="true"
+		x1="-6" x2="-5" step="1.75" stepper="2" fitstep="true"
+		dx1="0.0" dx2="0.0" dy1="0.1" dy2="0.715" dz="-2" 
+		r="0.02" edges="4" smooth="false" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+		
+	<!-- right -->
+	<railing refx="dhill" pt="true" h="0.5" x1="-5" x2="0" y1="0" y2="-4" z="-3" w="0.2" t="Textures\metal.png" m="Materials\material1.xml" c="0xd1ccc2"/>
+	<railing refx="dhill" refy="stairs-right" pt="true" h="0.03" x1="-5" x2="-1" y="0.4" z="-3" w="0.03" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+	<railing refx="dhill" refy="stairs-right" pt="true" h="0.03" x1="-5" x2="-1" y="0.7" z="-3" w="0.03" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+	<beamgroup refx="dhill" refz1="inrun-right" refy="stairs-right" last="true" end2="true"
+		x1="-5" x2="-1" y="0" step="0.75" stepper="2" fitstep="true"
+		dx1="0.0" dx2="0.0" dy1="0.1" dy2="0.715" dz="-2" 
+		r="0.02" edges="4" smooth="false" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+	
+	<railing refx="dhill" refy="inrun-top" pt="false" h="1.5" x1="-5" x2="-1.5" y="-1.52" z="-2.3" w="0.2" t="Textures\metal.png" m="Materials\material1.xml" c="0xd1ccc2"/>
+	
+	<!-- HILL FLOOR -->
+	<pillar refx1="dhill" refx2="dhill" x1="-1" x2="6" reflz="dhill-left" refrz="dhill-right" lz="0" rz="0" trefy="dhill-top" brefy="dhill-top" ty="0" by="-0.2" t="Textures\metal.png" m="Materials\material1.xml" c="0xd1ccc2" scale="0.2" />
+	
+	<!-- stairs hill -->
+	<stairs refx="dhill" refy="dhill-top" refz="dhill-right" 
+		x1="0" x2="75" rz="-1" lz="-0.1" s="0.35" h="0" t1="Textures\grid.png" m1="Materials\material1.xml" c1="0xbebebe" t2="Textures\concrete1.png" m2="Materials\material1.xml" c2="0xd1ccc2"/>
+	
+	<pillar refx1="dhill" refx2="dhill" refrz="dhill-right" reflz="dhill-right" x1="0" x2="75" lz="0" rz="-1" trefy="dhill-top" brefy="dhill-top" ty="0" by="-0.5" t="Textures\concrete1.png" m="Materials\material1.xml" c="0xaaaaaa"/>
+		
+    <pillar refx1="dhill" refx2="dhill" refrz="dhill-right" reflz="dhill-right" x1="0" x2="75" lz="-0.92" rz="-0.96" trefy="dhill-top" brefy="dhill-top" ty="0.81" by="0.78" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+    <pillar refx1="dhill" refx2="dhill" refrz="dhill-right" reflz="dhill-right" x1="0" x2="75" lz="-0.92" rz="-0.96" trefy="dhill-top" brefy="dhill-top" ty="0.41" by="0.38" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+		
+	<beamgroup refx="dhill" refz="dhill-right" refy="dhill-top" last="true" end1="true" rect="true"
+		x1="0" x2="75" step="2.0" stepper="3" fitstep="true"
+		dy1="0.808" dy2="-0.1" dz="-0.94"
+		r="0.025" edges="4" smooth="false" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+		
+	<!-- top hut -->
+	<!--back--><pillar refx="inrun" x1="-4" x2="-3.8" rz="-2.5" lz="1.2" refy="inrun-top" try1="3.1" tly1="2.3" try2="3.1" tly2="2.3" by="-0.01" bottom="false" scale="0.5" t="Textures\metal.png" m="Materials\material1.xml" c="0xaaaaaa"/>
+	<!--left--><pillar refx="inrun" x1="-4" x2="-0.02" rz="1.0" lz="1.2" refy="inrun-top" try1="2.3" tly1="2.2" try2="2.3" tly2="2.2" by="-0.01" bottom="false" scale="0.5" t="Textures\metal.png" m="Materials\material1.xml" c="0xaaaaaa"/>
+	<!--front--><pillar refx="inrun" x1="-0.22" x2="-0.02" rz="-2.5" lz="-0.8" refy="inrun-top" try1="3.1" tly1="2.7" try2="3.1" tly2="2.7" by="-0.01" bottom="false" scale="0.5" t="Textures\metal.png" m="Materials\material1.xml" c="0xaaaaaa"/>
+	<!--front upper--><pillar refx="inrun" x1="-0.22" x2="-0.02" rz="-0.85" lz="0.85" refy="inrun-top" try1="2.7" tly1="2.3" try2="2.7" tly2="2.3" by="1.9" bottom="false" scale="0.5" t="Textures\metal.png" m="Materials\material1.xml" c="0xaaaaaa"/>
+	<!--front upper--><pillar refx="inrun" x1="-0.22" x2="0.03" rz="-0.85" lz="0.85" refy="inrun-top" ty="1.95" by="1.9" bottom="false" scale="0.5" t="Textures\metal.png" m="Materials\material1.xml" c="0xaaaaaa"/>
+	<!--front--><pillar refx="inrun" x1="-0.22" x2="-0.02" rz="0.8" lz="1.05" refy="inrun-top" try1="2.35" tly1="2.3" try2="2.35" tly2="2.3" by="-0.01" bottom="false" scale="0.5" t="Textures\metal.png" m="Materials\material1.xml" c="0xaaaaaa"/>
+	<!--right--><pillar refx="inrun" x1="-4" x2="-0.02" rz="-2.5" lz="-2.3" refy="inrun-top" ty="2.2" by="-0.01" bottom="false" scale="0.5" t="Textures\metal.png" m="Materials\material1.xml" c="0xaaaaaa"/>
+	<!--right--><pillar type="glass" refx="inrun" x1="-3.9" x2="-0.12" rz="-2.45" lz="-2.4" refy="inrun-top" ty="3.1" by="2.2" bottom="false" scale="0.5" t="Textures\railing-glass-cut.png" m="Materials\window.xml" c="0xff2b51a1"/>
+	<!--right--><pillar refx="inrun" x1="-1" x2="-1.9" rz="-2.55" lz="-2.3" refy="inrun-top" ty="1.95" by="1.9" bottom="false" scale="0.5" t="Textures\metal.png" m="Materials\material1.xml" c="0xaaaaaa"/>
+	
+	<!--roof--><pillar refx="inrun" x1="-5" x2="1" rz="-3" lz="1.2" refy="inrun-top" try1="3.3" tly1="2.3" try2="3.3" tly2="2.3" bry1="3.2" bly1="2.2" bry2="3.2" bly2="2.2" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+
+	<!-- door -->
+	<pillar refx="inrun" type="glass" x1="0" x2="-0.02" rz="-0.8" lz="-0.002" refy="inrun-top" ty="1.9" by="-0.01" rear="false" left="false" zbias="2" t="Textures\railing-glass-cut.png" m="Materials\window.xml" c="0xff2b51a1"/>
+	<pillar refx="inrun" type="glass" x1="0" x2="-0.02" rz="0.002" lz="0.8" refy="inrun-top" ty="1.9" by="-0.01" rear="false" left="false" right="false" zbias="2" t="Textures\railing-glass-cut.png" m="Materials\window.xml" c="0xff2b51a1"/>
+	
+	<pillar refx="inrun" x1="-1" x2="-1.9" rz="-2.5" lz="-2.5" refy="inrun-top" ty="1.9" by="-0.01" rear="true" left="true" right="true" zbias="2" t="Textures\metal.png" m="Materials\material1.xml" c="0x2b51a1"/>
+	<pillar refx="inrun" x1="-1.1" x2="-1.2" rz="-2.52" lz="-2.52" refy="inrun-top" ty="0.9" by="0.85" rear="true" left="true" right="true" zbias="2" t="Textures\metal.png" m="Materials\material1.xml" c="0xaaaaaa"/>
+
+
+</hill>
